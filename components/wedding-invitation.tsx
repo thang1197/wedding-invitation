@@ -1,21 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import {
   Heart,
-  MapPin,
-  Calendar,
-  Clock,
-  Users,
-  Camera,
-  Plane,
-  Car,
-  Gift,
-  Music,
-  Utensils,
-  Phone,
-  Mail,
 } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { Header } from "./layout/header";
@@ -23,6 +9,8 @@ import { CountDown } from "./layout";
 import { ParentInformation } from "./layout/parent-information";
 import { BrideGroom } from "./layout/bride-groom";
 import { WeddingInformation } from "./layout/wedding-information";
+import { Gallery } from "./layout/gallery";
+import styles from './style.module.css'
 
 export function WeddingInvitation() {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -47,59 +35,19 @@ export function WeddingInvitation() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      <style jsx>{`
-        .scroll-animate {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .scroll-animate.animate-in {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        .float-animation {
-          animation: float 6s ease-in-out infinite;
-        }
-        .float-animation-delayed {
-          animation: float 6s ease-in-out infinite 2s;
-        }
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          50% {
-            transform: translateY(-20px) rotate(2deg);
-          }
-        }
-        .parallax-bg {
-          background-attachment: fixed;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-        }
-      `}</style>
-
       {/* Hero Section with Image Placeholder */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image Placeholder */}
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-100 via-pink-50 to-amber-50">
-          <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-            <div className="text-center text-gray-800 p-8 bg-white/90 rounded-lg backdrop-blur-sm border border-gray-200">
-              <Camera className="w-16 h-16 mx-auto mb-4 text-gray-600" />
-              <p className="text-lg font-medium">Your Hero Image Here</p>
-              <p className="text-sm text-gray-600">Recommended: 1920x1080px</p>
-            </div>
-          </div>
-        </div>
+         <img
+            src="/header.jpg"
+            className="w-full h-full object-cover opacity-50 absolute"
+            alt="background"
+          />
 
-        {/* Overlay Content */}
-        {/* Layout organized in slides */}
         <Header />
-
-        <div className="absolute top-20 left-20 w-32 h-32 border border-white/30 rounded-full float-animation"></div>
-        <div className="absolute bottom-32 right-16 w-24 h-24 border border-white/20 rounded-full float-animation-delayed"></div>
-        <div className="absolute top-1/2 right-20 w-16 h-16 bg-rose-200/30 rounded-full float-animation"></div>
+        
+        <div className={`${styles['float-animation']} absolute top-20 left-20 w-32 h-32 border border-white/30 rounded-full bg-rose-200/70`}></div>
+        <div className={`${styles['float-animation-delayed']} absolute bottom-32 right-30 w-24 h-24 border border-white/20 rounded-full bg-rose-200/50`}></div>
+        <div className={`${styles['float-animation']} absolute top-1/2 right-20 w-16 h-16 bg-rose-200/60 rounded-full`}></div>
       </div>
 
       {/* CountDown */}
@@ -114,7 +62,7 @@ export function WeddingInvitation() {
       {/* Wedding Details */}
       <WeddingInformation />
 
-      <section className="py-20 px-4 bg-gradient-to-b from-slate-50 to-white">
+      {/* <section className="py-20 px-4 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl font-light text-gray-800 mb-4">
@@ -124,7 +72,6 @@ export function WeddingInvitation() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-16">
-            {/* Bridesmaids */}
             <div className="scroll-animate">
               <h3 className="text-2xl font-light text-center text-gray-800 mb-8">
                 Bridesmaids
@@ -143,8 +90,6 @@ export function WeddingInvitation() {
                 ))}
               </div>
             </div>
-
-            {/* Groomsmen */}
             <div className="scroll-animate">
               <h3 className="text-2xl font-light text-center text-gray-800 mb-8">
                 Groomsmen
@@ -163,7 +108,7 @@ export function WeddingInvitation() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
@@ -260,29 +205,7 @@ export function WeddingInvitation() {
       </section> */}
 
       {/* Gallery Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl font-light text-gray-800 mb-4">Memories</h2>
-            <div className="w-24 h-px bg-rose-400 mx-auto"></div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div
-                key={i}
-                className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 scroll-animate hover:scale-105"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                <div className="text-center text-gray-400">
-                  <Camera className="w-8 h-8 mx-auto mb-2" />
-                  <p className="text-xs">Photo {i}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Gallery />
 
       {/* <section className="py-20 px-4 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -333,7 +256,7 @@ export function WeddingInvitation() {
       </section> */}
 
       {/* RSVP Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-rose-50 to-pink-50">
+      {/* <section className="py-20 px-4 bg-gradient-to-b from-rose-50 to-pink-50">
         <div className="max-w-2xl mx-auto text-center scroll-animate">
           <h2 className="text-4xl font-light text-gray-800 mb-6">
             Please RSVP
@@ -375,7 +298,7 @@ export function WeddingInvitation() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
       <footer className="py-12 px-4 bg-gray-800 text-white">

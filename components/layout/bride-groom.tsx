@@ -6,7 +6,7 @@ const gwendolyn = Gwendolyn({ subsets: ['latin'], weight: '700' });
 
 export function BrideGroom () {
     return (
-      <section className="bg-[url('/bride-groom.jpg')] bg-no-repeat bg-cover bg-center w-full h-[1200px] py-10">
+      <section className="bg-[url('/bride-groom.jpg')] bg-no-repeat bg-cover bg-center w-full h-[1000px] py-10">
          <div className="max-w-4xl mx-auto mt-40">
           <div className="text-center mb-8 scroll-animate">
             <h2 className="text-3xl font-light text-gray-800 mb-2 font-serif">

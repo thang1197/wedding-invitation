@@ -2,10 +2,10 @@ import { Calendar } from "./calendar";
 
 export function WeddingInformation() {
   return (
-    <section className="py-12 px-2 bg-white">
+    <section className="py-10 px-2 bg-white">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16 scroll-animate">
-          <h2 className="text-4xl font-light text-gray-800 mb-4">
+          <h2 className="text-3xl text-gray-800 mb-4 font-serif font-bold">
             Trân Trọng Kính Mời
           </h2>
           {/* <p>Bạn Cùng Người Thương</p> */}

@@ -31,10 +31,10 @@ export function Calendar() {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-2 w-[80%] mx-auto">
+    <div className="bg-white rounded-lg shadow-sm p-2 w-[90%] mx-auto">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-4xl font-black text-gray-900 tracking-wider uppercase">{month}</h1>
+        <h1 className="text-3xl font-black text-gray-900 tracking-wider uppercase">{month}</h1>
         <span className="text-xl text-gray-700 font-bold">{year}</span>
       </div>
 

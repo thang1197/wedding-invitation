@@ -1,6 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Sansita_Swashed } from "next/font/google";
+
+const sansitaSwashed = Sansita_Swashed({
+  subsets: ['latin'],
+  weight: '700'
+})
 
 const weddingDate = new Date("2025-12-14T00:00:00");
 
@@ -38,9 +44,9 @@ export function CountDown() {
   if (!countDown) return null; // prevents SSR/CSR mismatch
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-r from-rose-500 to-pink-500 text-white">
+    <section className="py-16 px-4 bg-gradient-to-r from-rose-200 to-pink-200 text-pink-700">
       <div className="max-w-4xl mx-auto text-center scroll-animate">
-        <h2 className="text-3xl font-light mb-8">Save the Date</h2>
+        <h2 className={`text-3xl mb-8 ${sansitaSwashed.className}`}>Save the Date</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {countDown.map((item, index) => (
             <div
