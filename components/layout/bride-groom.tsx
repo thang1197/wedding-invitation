@@ -22,7 +22,7 @@ export function BrideGroom () {
                 <p className="font-serif">(Út Nam)</p>
               </div>
               <div className="text-2xl py-1 flex items-center justify-center">
-                <Image src="/heart.png" alt="" width={70} height={70} />
+                <Image src="/ring.png" alt="" width={70} height={70} />
               </div>
               <div className="py-2 tracking-widest">
                 <p className={`${gwendolyn.className} font-bold text-4xl`}>Võ Thị Huế Anh</p>
