@@ -1,0 +1,213 @@
+/* Scroll Animations */
+/* Count Down */
+.count-down {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-in-out;
+}
+
+.count-down.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Parent Information */
+.bride-parent {
+  opacity: 0;
+  transform: translateX(-150px);
+  transition: all 1.3s ease-in-out;
+}
+
+.groom-parent {
+  opacity: 0;
+  transform: translateX(150px);
+  transition: all 1.3s ease-in-out;
+}
+
+.bride-parent.show,
+.groom-parent.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Bride Groom */
+.bride-groom-title {
+  opacity: 0;
+  transition: all 1.2s ease-in-out;
+}
+
+.bride-groom-title.show {
+  /* transform: translateY(-30px); */
+  opacity: 1;
+  animation: bride-groom-title 1.2s;
+}
+
+@keyframes bride-groom-title {
+  0% {
+    transform: scale(1.2) translateY(-50px);
+  }
+  50% {
+    transform: scale(1.2) translateY(-25px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+.bride {
+  opacity: 0;
+  transform: translateX(-150px);
+  transition: all 1.2s ease-in-out;
+}
+
+.groom {
+  opacity: 0;
+  transform: translateX(150px);
+  transition: all 1.2s ease-in-out;
+}
+
+.bride.show,
+.groom.show {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.bride-groom-img,
+.ring {
+  opacity: 0;
+  transition: all 1.2s ease-in-out;
+}
+
+.bride-groom-img.show,
+.ring.show {
+  opacity: 1;
+  animation: bride-groom-img 1.2s;
+}
+
+@keyframes bride-groom-img {
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Wedding Information */
+.wedding-info-title {
+  opacity: 0;
+  transition: all 1.2 ease-in-out;
+}
+
+.wedding-info-title.show {
+  opacity: 1;
+  animation: wedding-info-title 1s;
+}
+
+@keyframes wedding-info-title {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.calendar {
+  opacity: 1;
+  transform: translateX(150px);
+  transition: all 1.2s ease-in-out;
+}
+.calendar.show {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.calendar-header {
+  opacity: 0;
+  transition: all 1.2 ease-in-out;
+}
+.calendar-header.show {
+  opacity: 1;
+  animation: calendar-header 1.2s;
+}
+
+@keyframes calendar-header {
+  0% {transform: translateY(50px);}
+  100% {transform: translateY(0px);}
+}
+
+.calendar-heart {
+  opacity: 0;
+  transition-delay: 1.5s;
+  transition: all 1.2s ease-in-out;
+  transform: scale(0.3);
+}
+
+.calendar-heart.show {
+  opacity: 1;
+  transform: scale(1.0);
+}
+
+.address {
+  opacity: 0;
+  transform: translateX(-150px);
+  transition: all 1.2s ease-in-out;
+}
+
+.map {
+  opacity: 0;
+  transform: translateX(150px);
+  transition: all 1.2s ease-in-out;
+}
+
+.address.show,
+.map.show{
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.img1 {
+  opacity: 0;
+  transform: translateX(-150px);
+  transition: all 1.2s ease-in-out;
+}
+
+.img2 {
+  opacity: 0;
+  transform: translateX(150px);
+  transition: all 1.2s ease-in-out;
+}
+
+.img3 {
+  opacity: 0;
+  transform: translateX(-150px);
+  transition: all 1.2s ease-in-out;
+  animation-delay: 1.2s;
+}
+
+.img4 {
+  opacity: 0;
+  transform: translateX(-150px);
+  transition: all 1.2s ease-in-out;
+  animation-delay: 2.4s;
+}
+
+.img5 {
+  opacity: 0;
+  transform: translateX(150px);
+  transition: all 1.2s ease-in-out;
+  animation-delay: 2.4s;
+}
+
+.img1.show,
+.img2.show,
+.img3.show,
+.img4.show,
+.img5.show {
+  opacity: 1;
+  transform: translateX(0);
+}

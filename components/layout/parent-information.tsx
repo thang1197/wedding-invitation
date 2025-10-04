@@ -1,11 +1,50 @@
 import Image from "next/image";
 import { Fraunces, Charm } from "next/font/google";
+import { useEffect, useRef } from "react";
+import styles from './style.module.css'
+
 const fraunces = Fraunces({ subsets: ["latin"], weight: "400" });
 const charm = Charm({ subsets: ["latin"], weight: "400" });
 
 export function ParentInformation() {
+  const refBride = useRef<HTMLDivElement>(null)
+  const refGroom = useRef<HTMLDivElement>(null)
+  const refSection = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if(refBride.current && refGroom.current && refSection.current){
+      const listParentinfo : HTMLDivElement[] = [
+        refBride.current,
+        refGroom.current
+      ];
+
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if(entry.isIntersecting){
+              entry.target.classList.add(styles['show'])
+            }
+            if(entry.target.id === 'parent-infomation' && !entry.isIntersecting){
+              listParentinfo.forEach((item) => {
+                item.classList.remove(styles['show'])
+              })
+              // entry.target.classList.remove(styles['show'])
+            }
+          })
+        }, {
+          threshold: 0.1
+        }
+      )
+
+      observer.observe(refBride.current)
+      observer.observe(refGroom.current)
+      observer.observe(refSection.current)
+
+      return () => observer.disconnect();
+    }
+  },[refBride.current, refGroom.current])
   return (
-    <section className="py-10 bg-[rgb(250,240,230)]">
+    <section id="parent-infomation" ref={refSection} className="py-10 bg-[rgb(250,240,230)] overflow-hidden">
       <div className="w-full px-4">
         <div className="border-l h-[50px] border-black"></div>
 
@@ -27,7 +66,8 @@ export function ParentInformation() {
           className={`${fraunces.className} border-l border-black pt-4 pl-2 space-y-4`}
         >
           {/* Nhà Trai */}
-          <div className="space-y-2 scroll-animate font-bold uppercase flex flex-col text-black">
+          <div ref={refBride} 
+          className={`space-y-2 scroll-animate font-bold uppercase flex flex-col text-black ${styles['bride-parent']}`}>
             <p className="leading-relaxed">Nhà Trai</p>
             <p className="leading-relaxed">Lê Tiến Thành (Cố Phụ)</p>
             <p className={`leading-relaxed`}>Lương Thị Tân</p>
@@ -37,7 +77,8 @@ export function ParentInformation() {
           </div>
 
           {/* Nhà Gái */}
-          <div className="space-y-2 scroll-animate font-bold uppercase flex flex-col text-black">
+          <div ref={refGroom} 
+          className={`space-y-2 scroll-animate font-bold uppercase flex flex-col text-black ${styles['groom-parent']}`}>
             <p className=" leading-relaxed font-serif">Nhà Gái</p>
             <p className="leading-relaxed">Võ Thanh Sơn</p>
             <p className="leading-relaxed">Nguyễn Thị Tuyết Nga</p>

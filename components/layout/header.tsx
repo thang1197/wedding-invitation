@@ -1,15 +1,20 @@
 import { Heart } from "lucide-react";
-import { Imperial_Script } from "next/font/google";
+import { Imperial_Script, Gluten } from "next/font/google";
 
 const imperialScript = Imperial_Script({
   weight: "400",
   subsets: ["latin"],
 });
 
+const gluten = Gluten({
+  subsets: ["latin"],
+  weight: "400"
+})
+
 export function Header() {
   return (
     <div className="relative z-10 text-center text-white px-4 pt-56">
-      <div className="flex flex-col gap-2 text-6xl md:text-7xl mb-8">
+      <div className="flex flex-col gap-2 text-6xl mb-8">
         <h1
           className={`text-black tracking-wide ${imperialScript.className}`}
         >
@@ -29,14 +34,13 @@ export function Header() {
 
       <div className="w-full h-3 bg-gradient-to-r from-transparent via-rose-400 to-transparent mx-auto mb-6"></div>
 
-      {/* <p className="text-xl text-gray-600 font-light italic mb-8 text-balance">
-          Together with our families, we joyfully invite you to celebrate our
-          union
+      <p className={`text-xl text-black font-bold uppercase mb-8 text-balance ${gluten.className}`}>
+          ARE GETTING MARRIED
         </p>
 
-        <div className="text-lg text-gray-700 font-medium">
-          June 15th, 2024 • 4:00 PM
-        </div> */}
+        <div className="text-3xl text-black font-semibold">
+          14 • 12 • 2025
+        </div>
     </div>
   );
 }

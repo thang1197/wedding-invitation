@@ -1,6 +1,8 @@
 "use client"
 
 import { Heart } from "lucide-react"
+import { useEffect, useRef } from "react"
+import styles from './style.module.css';
 
 export function Calendar() {
   // February 2025 calendar data
@@ -30,10 +32,43 @@ export function Calendar() {
     calendarDays.push(day)
   }
 
+  const calendarRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const heartRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    if(calendarRef.current && headerRef.current && heartRef.current){
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if(entry.isIntersecting){
+              entry.target.classList.add(styles['show'])
+            }
+            if(!entry.isIntersecting){           
+              entry.target.classList.remove(styles['show'])
+            }
+          })
+        }, {
+          threshold: 0.01
+        }
+      )
+
+      observer.observe(calendarRef.current)
+      observer.observe(headerRef.current)
+      observer.observe(heartRef.current)
+
+      return () => observer.disconnect();
+    }
+  },[calendarRef.current, heartRef.current, headerRef.current])
+
   return (
-    <div className="bg-white rounded-lg shadow-sm p-2 w-[90%] mx-auto">
+    <div 
+    ref={calendarRef}
+    className={`bg-[rgb(245,214,185)] rounded-lg shadow-sm p-2 w-[90%] mx-auto overflow-hidden ${styles['calendar']}`}>
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div
+      ref={headerRef} 
+      className={`flex justify-between items-center mb-6 ${styles['calendar-header']}`}>
         <h1 className="text-3xl font-black text-gray-900 tracking-wider uppercase">{month}</h1>
         <span className="text-xl text-gray-700 font-bold">{year}</span>
       </div>
@@ -61,7 +96,9 @@ export function Calendar() {
                 {/* Outline hearts */}
                 {heartDates.includes(day) && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <Heart className="w-10 h-10 text-pink-500 fill-pink-500" />
+                    <Heart 
+                    ref={heartRef}
+                    className={`w-10 h-10 text-pink-500 fill-pink-500 ${styles['calendar-heart']}`} />
                     <span className="absolute text-sm text-white font-bold z-10">{day}</span>
                   </div>
                 )}

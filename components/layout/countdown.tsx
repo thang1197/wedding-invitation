@@ -1,20 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Sansita_Swashed } from "next/font/google";
+import styles from "./style.module.css";
 
 const sansitaSwashed = Sansita_Swashed({
-  subsets: ['latin'],
-  weight: '700'
-})
+  subsets: ["latin"],
+  weight: "700",
+});
 
 const weddingDate = new Date("2025-12-14T00:00:00");
+
+interface CountDownProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function CountDown() {
   const calculateCountDown = () => {
     const currentTimes = weddingDate.getTime() - new Date().getTime();
     const days = Math.floor(currentTimes / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((currentTimes % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const hours = Math.floor(
+      (currentTimes % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
     const minutes = Math.floor((currentTimes % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((currentTimes % (1000 * 60)) / 1000);
 
@@ -30,24 +35,69 @@ export function CountDown() {
     { label: string; value: string }[] | null
   >(null);
 
+  const ref = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // calculate immediately after mount
+    // ✅ start countdown immediately
     setCountDown(calculateCountDown());
 
     const interval = setInterval(() => {
       setCountDown(calculateCountDown());
     }, 1000);
 
-    return () => clearInterval(interval);
+    // ✅ cleanup both
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
-  if (!countDown) return null; // prevents SSR/CSR mismatch
+  useEffect(() => {
+    // let observer: IntersectionObserver | null = null;
+    if (ref.current && sectionRef.current) {
+      const countDownContent = ref.current;
+
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            // console.log("Counterdown: ", entry.isIntersecting);
+            if (entry.target.id === 'countdown-section' && entry.isIntersecting) {
+              countDownContent.classList.add(styles["show"]);
+            }
+
+            if (entry.target.id === 'countdown-section' && !entry.isIntersecting) {
+              countDownContent.classList.remove(styles["show"]);
+            }
+          });
+        },
+        {
+          threshold: 0.1
+        }
+      );
+
+      observer.observe(ref.current);
+      observer.observe(sectionRef.current);
+
+      return () => observer.disconnect();
+    }
+  }, [ref.current, sectionRef.current]);
+
+  if (!countDown) return null; // prevent SSR mismatch
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-r from-rose-200 to-pink-200 text-pink-700">
-      <div className="max-w-4xl mx-auto text-center scroll-animate">
-        <h2 className={`text-3xl mb-8 ${sansitaSwashed.className}`}>Save the Date</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+    <section
+      id='countdown-section'
+      ref={sectionRef}
+      className={`py-36 px-4 bg-[url('/save_the_date.jpg')] bg-no-repeat bg-cover bg-center`}
+    >
+      <div
+        ref={ref}
+        className={`max-w-4xl mx-auto text-center ${styles["count-down"]}`}
+      >
+        <h2 className={`text-3xl mb-8 ${sansitaSwashed.className}`}>
+          Save the Date
+        </h2>
+        <div className="grid grid-cols-2 gap-6">
           {countDown.map((item, index) => (
             <div
               key={item.label}
