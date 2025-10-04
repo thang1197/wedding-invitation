@@ -10,7 +10,7 @@ export async function createInvitation(guest: string): Promise<string> {
   const encoded = Buffer.from(guest).toString("base64");
   const invitation = await Invitation.create({
     guest: guest,
-    url: VERCEL_URL + "/" + encoded,
+    url: 'https://wedding-invitation-self-rho.vercel.app/' + encoded,
   });
-  return VERCEL_URL + "/" + encoded;
+  return 'https://wedding-invitation-self-rho.vercel.app/' + encoded;
 }
