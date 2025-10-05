@@ -1,11 +1,11 @@
 import { Calendar } from "./calendar";
-import { Faustina, Tinos } from "next/font/google";
+import { Faustina, Charm } from "next/font/google";
 import styles from "./style.module.css";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 const faustina = Faustina({ subsets: ["latin"], weight: "400" });
-const tinos = Tinos({ weight: "700", subsets: ["latin"] });
+const charm = Charm({ weight: "700", subsets: ["latin"] });
 
 export function WeddingInformation() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -16,7 +16,9 @@ export function WeddingInformation() {
   const pathName = usePathname().replace("/", "");
   let guest = "";
   try {
-    guest = atob(pathName);
+    guest = new TextDecoder().decode(
+      Uint8Array.from(atob(pathName), (c) => c.charCodeAt(0))
+    );
   } catch (error) {}
 
   useEffect(() => {
@@ -72,7 +74,7 @@ export function WeddingInformation() {
               Trân Trọng Kính Mời
             </h2>
             <h3
-              className={`font-bold font-serif text-3xl text-pink-800 ${tinos.className} mb-3`}
+              className={`font-bold font-serif text-4xl text-pink-800 ${charm.className} mb-3`}
             >
               {guest}
             </h3>
@@ -108,11 +110,11 @@ export function WeddingInformation() {
 
             <div className="space-y-1.5">
               <h3 className="">Trung tâm Hội nghị & Tiệc cưới</h3>
-            <h3 className="uppercase font-bold">The Adora Luxury</h3>
-            <h3 className="font-bold">Tầng 2 - Sảnh Grand Sapphire</h3>
-            <h3 className="font-bold">
-              198 Hoàng Văn Thụ, phường Đức Nhuận, TPHCM
-            </h3>
+              <h3 className="uppercase font-bold">The Adora Luxury</h3>
+              <h3 className="font-bold">Tầng 2 - Sảnh Grand Sapphire</h3>
+              <h3 className="font-bold">
+                198 Hoàng Văn Thụ, phường Đức Nhuận, TPHCM
+              </h3>
             </div>
           </div>
 
