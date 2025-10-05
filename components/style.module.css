@@ -29,53 +29,17 @@
   background-size: cover;
 }
 
-/* Heart Rain */
-/* @keyframes heart-rain1 {
-  0% {
-    top: 5px;
-    right: 10px;
-  }
-
-  5% {
-    top: 5px;
-    right: 10px;
-  }
-
-  10% {
-    top: 5px;
-    right: 10px;
-  }
-} */
-
-/* Hearts */
-.heart5 {
-  animation: heart5 50s infinite;
-}
-
-.heart1 {
-  animation: heart1 50s infinite;
-}
-
-.heart2 {
-  animation: heart2 50s infinite;
-}
-
-.heart3 {
-  animation: heart3 50s infinite;
-}
-
-.heart4 {
-  animation: heart4 50s infinite;
-}
 
 @keyframes heart5 {
   0% {top: 0; right: 25%}
+  25% {top: 10%; right: 60%}
   50% {top: 50%; right: 10%}
+  75% {top: 70%; right: 40%}
   100% {top: 100%; right: 5%}
 }
 
 @keyframes heart1 {
-  0% {top: 5%; right: 20%}
+  0% {top: 0; right: 50%}
   25% {top: 35%; right: 65%}
   50% {top: 50%; right: 30%}
   75% {top: 70%; right: 40%}
@@ -83,7 +47,7 @@
 }
 
 @keyframes heart2 {
-  0% {top: 2%; right: 35%}
+  0% {top: 0; right: 35%}
   25% {top: 30%; right: 50%}
   50% {top: 50%; right: 10%}
   75% {top: 75%; right: 20%}
@@ -91,13 +55,33 @@
 }
 
 @keyframes heart3 {
-  0% {top: 7%; right: 40%}
-  50% {top: 60%; right: 50%}
-  100% {top: 100%; right: 10%}
+  0% {top: 0; right: 40%}
+  25% {top: 30%; right: 50%}
+  50% {top: 60%; right: 60%}
+  75% {top: 70%; right: 40%}
+  100% {top: 100%; right: 55%}
 }
 
 @keyframes heart4 {
   0% {top: 0; right: 30%}
+  25% {top: 15%; right: 50%}
   50% {top: 50%; right: 35%}
-  100% {top: 100%; right: 5%}
+  75% {top: 65%; right: 40%}
+  100% {top: 100%; right: 70%}
+}
+
+@keyframes heart6 {
+  0% {top: 0; right: 70%}
+  25% {top: 15%; right: 50%}
+  50% {top: 40%; right: 60%}
+  75% {top: 75%; right: 55%}
+  100% {top: 100%; right: 75%}
+}
+
+@keyframes heart7 {
+  0% {top: 0; right: 65%}
+  25% {top: 10%; right: 75%}
+  50% {top: 30%; right: 45%}
+  75% {top: 65%; right: 60%}
+  100% {top: 100%; right: 50%}
 }

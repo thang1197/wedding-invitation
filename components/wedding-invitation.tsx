@@ -1,6 +1,5 @@
 "use client";
 // import { Heart } from "lucide-react";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Header } from "./layout/header";
 import { CountDown } from "./layout";
 import { ParentInformation } from "./layout/parent-information";
@@ -11,17 +10,26 @@ import styles from "./style.module.css";
 import { QrCodeCard } from "./layout/qr-code";
 import { RainHeart } from "./heart";
 import { Heart } from "lucide-react";
+import { Tinos } from "next/font/google";
+
+const tinos = Tinos({ weight: "700", subsets: ["latin"] });
 
 export function WeddingInvitation() {
-
-  const heartList = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+  const heartList = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {heartList.map((item) => {
-        return (
-          <RainHeart key={item}/>
-        )
+        return <RainHeart delayStart={1} delayEnd={20} key={item} />;
+      })}
+      {heartList.map((item) => {
+        return <RainHeart delayStart={25} delayEnd={50} key={item} />;
+      })}
+      {heartList.map((item) => {
+        return <RainHeart delayStart={55} delayEnd={80} key={item} />;
+      })}
+      {heartList.map((item) => {
+        return <RainHeart delayStart={85} delayEnd={110} key={item} />;
       })}
       {/* Hero Section with Image Placeholder */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -66,7 +74,7 @@ export function WeddingInvitation() {
           <div className="flex justify-center mb-4">
             <Heart className="w-8 h-8 text-rose-400 fill-rose-400 float-animation" />
           </div>
-          <p className="text-gray-300 mb-4 font-serif">
+          <p className={`text-gray-300 mb-4 ${tinos.className}`}>
             Sự hiện diện của quý khách là niềm vinh hạnh cho gia đình chúng tôi
           </p>
         </div>
