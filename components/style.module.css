@@ -31,7 +31,7 @@
 
 
 @keyframes heart5 {
-  0% {top: 0; right: 25%}
+  0% {top: -10%; right: 60%}
   25% {top: 10%; right: 60%}
   50% {top: 50%; right: 10%}
   75% {top: 70%; right: 40%}
@@ -39,49 +39,49 @@
 }
 
 @keyframes heart1 {
-  0% {top: 0; right: 50%}
-  25% {top: 35%; right: 65%}
-  50% {top: 50%; right: 30%}
+  0% {top: -10%; right: 65%}
+  25% {top: 15%; right: 65%}
+  50% {top: 50%; right: 50%}
   75% {top: 70%; right: 40%}
   100% {top: 100%; right: 10%}
 }
 
 @keyframes heart2 {
-  0% {top: 0; right: 35%}
-  25% {top: 30%; right: 50%}
+  0% {top: -10%; right: 35%}
+  25% {top: 10%; right: 35%}
   50% {top: 50%; right: 10%}
   75% {top: 75%; right: 20%}
   100% {top: 100%; right: 15%}
 }
 
 @keyframes heart3 {
-  0% {top: 0; right: 40%}
-  25% {top: 30%; right: 50%}
+  0% {top: -10%; right: 40%}
+  25% {top: 20%; right: 50%}
   50% {top: 60%; right: 60%}
   75% {top: 70%; right: 40%}
   100% {top: 100%; right: 55%}
 }
 
 @keyframes heart4 {
-  0% {top: 0; right: 30%}
-  25% {top: 15%; right: 50%}
+  0% {top: -10%; right: 65%}
+  25% {top: 15%; right: 65%}
   50% {top: 50%; right: 35%}
   75% {top: 65%; right: 40%}
   100% {top: 100%; right: 70%}
 }
 
-@keyframes heart6 {
-  0% {top: 0; right: 70%}
-  25% {top: 15%; right: 50%}
+/* @keyframes heart6 {
+  0% {top: -10%; right: 70%}
+  25% {top: 15%; right: 70%}
   50% {top: 40%; right: 60%}
   75% {top: 75%; right: 55%}
   100% {top: 100%; right: 75%}
 }
 
 @keyframes heart7 {
-  0% {top: 0; right: 65%}
+  0% {top: -10%; right: 75%}
   25% {top: 10%; right: 75%}
   50% {top: 30%; right: 45%}
   75% {top: 65%; right: 60%}
   100% {top: 100%; right: 50%}
-}
+} */

@@ -109,7 +109,7 @@ export function WeddingInformation() {
             </h2>
 
             <div className="space-y-1.5">
-              <h3 className="">Trung tâm Hội nghị & Tiệc cưới</h3>
+              <h3 className="font-bold">Trung tâm Hội nghị & Tiệc cưới</h3>
               <h3 className="uppercase font-bold">The Adora Luxury</h3>
               <h3 className="font-bold">Tầng 2 - Sảnh Grand Sapphire</h3>
               <h3 className="font-bold">

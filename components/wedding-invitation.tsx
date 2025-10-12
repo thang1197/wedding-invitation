@@ -20,16 +20,16 @@ export function WeddingInvitation() {
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {heartList.map((item) => {
-        return <RainHeart delayStart={1} delayEnd={20} key={item} />;
+        return <RainHeart delayStart={1} delayEnd={7} key={item} />;
       })}
       {heartList.map((item) => {
-        return <RainHeart delayStart={25} delayEnd={50} key={item} />;
+        return <RainHeart delayStart={9} delayEnd={15} key={item} />;
       })}
       {heartList.map((item) => {
-        return <RainHeart delayStart={55} delayEnd={80} key={item} />;
+        return <RainHeart delayStart={17} delayEnd={23} key={item} />;
       })}
       {heartList.map((item) => {
-        return <RainHeart delayStart={85} delayEnd={110} key={item} />;
+        return <RainHeart delayStart={25} delayEnd={31} key={item} />;
       })}
       {/* Hero Section with Image Placeholder */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
